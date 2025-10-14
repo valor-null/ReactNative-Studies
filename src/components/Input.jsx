@@ -7,31 +7,28 @@ import { useState } from "react";
 import { Alert, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
-    const [fruta, setFruta] = useState("");
+    const [nome, setNome] = useState("");
 
     const apertarbotao = () => {   // Exibe um alerta nativo do sistema.
          // 1º argumento: título da caixa de diálogo.
         // 2º argumento: mensagem.
         // `fruta || "(vazio)"` -> se `fruta` for string vazia (ou falsy),
         // mostra o texto "(vazio)". Caso contrário, mostra o conteúdo de `fruta`.
-        Alert.alert("Fruta enviada", fruta || "(vazio)");
+        Alert.alert("Prazer" , nome || "(vazio)");
     }
 
 return (
     <View style={s.container}>
-
     <TextInput
-        placeholder="Digite uma fruta"
-        value={fruta}
-        onChangeText={setFruta}
+        placeholder="Digite seu nome"
+        value={nome}
+        onChangeText={setNome}
         style={s.input}
     />
 
     <Pressable style={s.btn} onPress={apertarbotao}> 
-    <Text style={s.btnText}>Envie a fruta</Text>
+    <Text style={s.btnText}>Me envie seu nome</Text>
     </Pressable>
-
-
     </View>
 );
 }
@@ -39,26 +36,26 @@ return (
 const s = StyleSheet.create({
     container: {
     flex: 1,                   // ocupa a tela toda
-    justifyContent: "center",  // centraliza verticalmente
+    justifyContent: "flex-start",  // centraliza verticalmente
     alignItems: "center",      // centraliza horizontalmente
-    padding: 16,
 },
     input: {
     width: 220,
     borderWidth: 1,
-    borderColor: "#616161",
+    borderColor: "#7082b4",
     borderRadius: 8,
     paddingHorizontal: 12,
     paddingVertical: 10,
-    marginBottom: 12,
-    backgroundColor: "#fff",
+    backgroundColor: "#7082b4",
+    padding: 40
 },
     btn: {
         width: 220,
-        backgroundColor: "#9370DB",
-        borderRadius: 18,
-        borderColor: "#170a2c",
-        borderWidth: 1
+        backgroundColor: "#0a0418",
+        borderRadius: 8,
+        borderColor: "#000000",
+        borderWidth: 2,
+        margin: 15
     },
     btnText: { 
     color: "#fff", 

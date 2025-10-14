@@ -1,6 +1,6 @@
 // Um exemplo de uma pagina inicial usando o componente acima
 
-import { StyleSheet } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Input from "../src/components/Input";
 import Teste from "../src/components/Teste";
@@ -9,10 +9,18 @@ import Teste from "../src/components/Teste";
 export default function Home() {
     return (
             <SafeAreaView style={estilo.tela}>
-            <>
-            <Teste nome="Clara" />
+            <View>
+            <Teste nome="Eu me chamo Valéria, Prazer! :D"/>
+
+            <Image
+            source={require("../assets/gif/computer.png")} 
+            style={estilo.logo} 
+            resizeMode="contain" 
+            accessibilityLabel="Garota mexendo no computador" 
+            />
+
             <Input />
-            </>
+            </View>
             </SafeAreaView>
     );
 }
@@ -21,9 +29,13 @@ export default function Home() {
 const estilo = StyleSheet.create({
     tela: {
         flex: 1, 
-        padding: 100,
-        justifyContent: "flex-start", 
+        padding: 20,
+        justifyContent: "center", 
         alignItems: "center", 
-        backgroundColor: "#FFCFCF"
-    }
+        backgroundColor: "#181322",
+    },
+    logo: {
+        width: 400,
+        height: 200
+    },
 });
