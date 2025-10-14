@@ -26,10 +26,11 @@ const h = StyleSheet.create({
         justifyContent: "center",
         flex: 1,
         alignItems: "center",
-        backgroundColor: "#FFCFCF"
+        backgroundColor: "#523f72"
     },
     link: {
         fontSize: 22,
-        fontWeight: 800
+        fontWeight: 800,
+        color: "#e2e2e2",
     }
 })
