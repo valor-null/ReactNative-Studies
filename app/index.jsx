@@ -15,6 +15,7 @@ return (
     <Link style={h.link} href="/crud">Crud(Local)</Link>
     <Link style={h.link} href="/tema">Tema Claro/Escuro</Link>
     <Link style={h.link} href="/lang">i18n (PT/EN)</Link>
+    <Link style={h.link} href="/firebase">Firebase Auth</Link>
     </View>
 );
 }
