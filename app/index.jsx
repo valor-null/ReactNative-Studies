@@ -10,6 +10,8 @@ return (
     <Link style={h.link} href="/axio">Axios</Link>
     <Link style={h.link} href="/erro">error</Link>
     <Link style={h.link} href="/link">Liking</Link>
+    <Link style={h.link} href="/effect">Effect</Link>
+    <Link style={h.link} href="/async">AsyncStorage</Link>
     </View>
 );
 }
