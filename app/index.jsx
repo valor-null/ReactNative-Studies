@@ -16,6 +16,7 @@ return (
     <Link style={h.link} href="/tema">Tema Claro/Escuro</Link>
     <Link style={h.link} href="/lang">i18n (PT/EN)</Link>
     <Link style={h.link} href="/firebase">Firebase Auth</Link>
+    <Link style={h.link} href="/fire">FireStore</Link>
     </View>
 );
 }
