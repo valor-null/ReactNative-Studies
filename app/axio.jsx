@@ -14,7 +14,7 @@ export default function App() {
       setCarregando(true);
       setErro("");
       const res = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts?_limit=10"
+        "https://jsonplaceholder.typicode.com/posts?_limit=20"
       );
       setDados(res.data); // <- a resposta vem em res.data
     } catch (e) {
