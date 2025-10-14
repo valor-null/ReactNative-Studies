@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, Button, FlatList, Text, View } from "react-native";
+import { ActivityIndicator, Button, FlatList, StyleSheet, Text, View } from "react-native";
 
 // Instale antes: npm i axios
 
@@ -33,7 +33,7 @@ export default function App() {
   }, []);
 
   return (
-    <View>
+    <View style={a.erro}>
       <Button title="Recarregar" onPress={carregar} />
 
       {carregando && <ActivityIndicator />}
@@ -50,3 +50,14 @@ export default function App() {
     </View>
   );
 }
+
+const a = StyleSheet.create({
+    erro: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "pink",
+        padding: 10,
+        paddingTop: 250
+    }
+})

@@ -1,36 +1,53 @@
 import { useEffect, useState } from "react";
-import { ActivityIndicator, Button, FlatList, Text, View } from "react-native";
+import { ActivityIndicator, Button, FlatList, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
-  const [data, setData] = useState([]);     // dados de sucesso
-  const [loading, setLoading] = useState(false); // estado de carregando
-  const [error, setError] = useState("");   // mensagem de erro (ou "")
+  const [data, setData] = useState([]);          // dados
+  const [loading, setLoading] = useState(false); // carregando
+  const [error, setError] = useState("");        // mensagem de erro
 
   async function carregar() {
     try {
       setLoading(true);
       setError("");
       const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
-      if (!res.ok) throw new Error("HTTP " + res.status); // erro de servidor
+      if (!res.ok) throw new Error("HTTP " + res.status);
       const json = await res.json();
-      setData(json); // sucesso
-    } catch (e) {
+      setData(json);
+    } catch (err) {
+      const msg =
+        err && typeof err.message === "string" ? err.message : "Erro desconhecido";
+      setError(msg);
       setData([]);
-      setError(e.message === "Failed to fetch" ? "Falha de rede" : String(e.message));
     } finally {
-      setLoading(false); // sempre volta a false
+      setLoading(false);
     }
   }
 
-  useEffect(() => { carregar(); }, []);
+  useEffect(() => {
+    carregar();
+  }, []);
 
   return (
-    <View style={{ padding: 16 }}>
-      <Button title="Recarregar" onPress={carregar} disabled={loading} />
+    <View style={e.erro}>
+      <Button
+        title={loading ? "Carregando..." : "Recarregar"}
+        onPress={carregar}
+        disabled={loading}
+      />
 
-      {loading && <ActivityIndicator />}              {/* LOADING */}
-      {error ? <Text style={{ color: "red" }}>{error}</Text> : null}  {/* ERRO */}
-      {!loading && !error && data.length === 0 && <Text>Sem dados.</Text>} {/* VAZIO */}
+      {loading ? <ActivityIndicator /> : null}
+
+      {error ? (
+        <View>
+          <Text>{error}</Text>
+          <Button title="Tentar de novo" onPress={carregar} />
+        </View>
+      ) : null}
+
+      {!loading && !error && data.length === 0 ? (
+        <Text>Sem dados.</Text>
+      ) : null}
 
       <FlatList
         data={data}
@@ -40,3 +57,14 @@ export default function App() {
     </View>
   );
 }
+
+const e = StyleSheet.create({
+    erro: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "ocean",
+        padding: 10,
+        paddingTop: 250
+    }
+})
